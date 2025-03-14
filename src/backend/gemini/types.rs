@@ -1,9 +1,6 @@
 use std::io::Cursor;
 
 use serde::{Deserialize, Serialize};
-use songbird::input::{
-	core::io::MediaSource, AudioStream, AudioStreamError, Compose,
-};
 
 #[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
@@ -158,44 +155,5 @@ impl GeminiAudioStream {
 		}
 
 		Self { data }
-	}
-}
-
-impl Compose for GeminiAudioStream {
-	fn create(
-		&mut self,
-	) -> Result<
-		AudioStream<Box<dyn MediaSource>>,
-		songbird::input::AudioStreamError,
-	> {
-		let cursor = Cursor::new(self.data.clone());
-		Ok(AudioStream {
-			input: Box::new(cursor),
-			hint: None,
-		})
-	}
-
-	fn should_create_async(&self) -> bool {
-		false
-	}
-
-	fn create_async<'a, 'async_trait>(
-		&'a mut self,
-	) -> ::core::pin::Pin<
-		Box<
-			dyn ::core::future::Future<
-					Output = Result<
-						AudioStream<Box<dyn MediaSource>>,
-						AudioStreamError,
-					>,
-				> + ::core::marker::Send
-				+ 'async_trait,
-		>,
-	>
-	where
-		'a: 'async_trait,
-		Self: 'async_trait,
-	{
-		Box::pin(async { self.create() })
 	}
 }
