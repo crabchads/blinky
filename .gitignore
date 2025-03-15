@@ -1,13 +1,12 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
-.venv
+node_modules/
+buck-out/
+out/
 target/
+.DS_Store
 *.*env*
 *.*log*
+third-party/*/src
+third-party/url/url
+compile_commands.json
+rust-project.json
+.cache/
