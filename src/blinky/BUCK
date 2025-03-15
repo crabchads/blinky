@@ -1,0 +1,12 @@
+rust_binary(
+    name = "blinky",
+    edition = "2024",
+    srcs = [
+        "main.rs",
+    ],
+    deps = [
+        "//discord:discord",
+        "//third-party/rust:tracing",
+        "//third-party/rust:tracing-subscriber",
+    ],
+)

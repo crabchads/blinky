@@ -1,0 +1,13 @@
+rust_library(
+    name = "discord",
+    edition = "2024",
+    srcs = [
+        "lib.rs",
+    ],
+    deps = [
+        "//src/websocket:websocket",
+        "//third-party/rust:tracing",
+        "//third-party/bssl/rust:bssl-sys",
+    ],
+    visibility = ["PUBLIC"],
+)

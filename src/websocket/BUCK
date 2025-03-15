@@ -1,0 +1,16 @@
+rust_library(
+    name = "websocket",
+    edition = "2024",
+    srcs = [
+        "lib.rs",
+        "client.rs",
+    ],
+    deps = [
+        "//third-party/bssl/rust:bssl-sys",
+        "//third-party/rust:base64",
+        "//third-party/rust:rand",
+        "//third-party/rust:sha1",
+        "//third-party/rust:tracing",
+    ],
+    visibility = ["PUBLIC"],
+)

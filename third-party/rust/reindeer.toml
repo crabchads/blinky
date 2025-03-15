@@ -1,0 +1,12 @@
+vendor = false
+precise_srcs = true
+include_top_level = true
+fixup_templates = true
+
+[buck]
+file_name = "BUCK"
+
+alias = "alias"
+filegroup = "filegroup"
+http_archive = "http_archive"
+git_fetch = "git_fetch"
